@@ -107,6 +107,7 @@ return {
         })
 
         vim.diagnostic.config({
+            virtual_text = { prefix = "●", spacing = 2 },
             float = {
                 focusable = false,
                 style = "minimal",

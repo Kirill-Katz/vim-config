@@ -32,7 +32,14 @@ vim.keymap.set("i", "<C-c>", "<Esc>")
 
 vim.keymap.set("n", "Q", "<nop>")
 vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
-vim.keymap.set("n", "<leader>f", vim.lsp.buf.format)
+vim.keymap.set("n", "<leader>f", function()
+    vim.lsp.buf.format({
+        formatting_options = {
+            tabSize = 4,
+            insertSpaces = true,
+        },
+    })
+end)
 
 vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz")
 vim.keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz")
@@ -49,7 +56,13 @@ vim.keymap.set(
 )
 
 vim.keymap.set("n", "<leader>vpp", "<cmd>e ~/.dotfiles/nvim/.config/nvim/lua/theprimeagen/packer.lua<CR>");
-vim.keymap.set('n', '<Leader>th', ':split | terminal<CR>')
+vim.keymap.set("n", "<Leader>th", function()
+    vim.cmd("belowright 10split")
+    vim.cmd("terminal")
+    vim.cmd("startinsert")
+end)
+
+vim.keymap.set("t", "<Esc>", "<C-\\><C-n>")
 
 vim.keymap.set("n", "<leader><leader>", function()
     vim.cmd("so")
