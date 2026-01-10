@@ -64,6 +64,12 @@ end)
 
 vim.keymap.set("t", "<Esc>", "<C-\\><C-n>")
 
+vim.api.nvim_create_user_command("CFRun", function()
+    local file = vim.fn.expand("%:p")
+    vim.cmd("botright split | terminal ./cf.sh " .. file)
+end, {})
+vim.keymap.set("n", "<leader>;", ":CFRun<CR>", { silent = true })
+
 vim.keymap.set("n", "<leader><leader>", function()
     vim.cmd("so")
 end)
