@@ -17,7 +17,10 @@ return {
             auto_install = true,
 
             indent = {
-                enable = true
+                -- Use Neovim's built-in, filetype-specific indentation rules.
+                -- Tree-sitter indentation can take over `indentexpr` and fail
+                -- when a parser is unavailable or incompatible.
+                enable = false,
             },
 
             highlight = {
